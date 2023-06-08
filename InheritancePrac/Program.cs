@@ -18,11 +18,30 @@ namespace InheritancePrac
 
             foreach (var item in animals)
             {
-                ((Dog)item).Bark();
-                ((Cat)item).Meow();
-
                 item.Eat();
                 item.Sleep();
+
+                //방법 1 : as
+                Dog dog = item as Dog;
+                if(dog != null)
+                {
+                    dog.Bark();
+                }
+
+                Cat cat = item as Cat;
+                if(cat != null)
+                {
+                    cat.Meow();
+                }
+
+                //방법 2 : is
+                if(item is Dog)
+                {
+                    ((Dog)item).Bark();
+                } else if(item is Cat)
+                {
+                    ((Cat)item).Meow();
+                }
             }
         }
     }
